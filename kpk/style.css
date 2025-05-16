@@ -31,7 +31,7 @@ body {
     position: absolute;
     display: block;
     list-style: none;
-    background: rgba(174, 214, 241, 0.3); /* Warna biru muda transparan */
+    background: rgba(48, 126, 179, 0.3); /* Warna biru muda transparan */
     animation: moveShapes 20s linear infinite;
     bottom: -200px;
     border-radius: 50%; /* Bentuk lingkaran */
