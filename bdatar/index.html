@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Hitung Luas & Keliling Bangun Datar</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/sweetalert2.min.css">
+</head>
+<body>
+    <div class="container">
+        <div id="menu-screen" class="screen active">
+            <h1>Game Bangun Datar</h1>
+            <div class="menu-options">
+                <h2>Pilih Bangun Datar</h2>
+                <label>
+                    <input type="radio" name="shapeType" value="segitiga" checked> Segitiga
+                </label>
+                <label>
+                    <input type="radio" name="shapeType" value="persegi"> Persegi
+                </label>
+                <label>
+                    <input type="radio" name="shapeType" value="persegiPanjang"> Persegi Panjang
+                </label>
+                <label>
+                    <input type="radio" name="shapeType" value="lingkaran"> Lingkaran
+                </label>
+                
+                <br />
+                <h2>Pilih Jenis Soal</h2>
+                <label>
+                    <input type="radio" name="questionCategory" value="campuran" checked> Campuran (Luas & Keliling)
+                </label>
+                <label>
+                    <input type="radio" name="questionCategory" value="luas"> Luas Saja
+                </label>
+                <label>
+                    <input type="radio" name="questionCategory" value="keliling"> Keliling Saja
+                </label>
+                <button id="startGameButton">Mulai Game</button>
+                <button id="howToPlayButton">Cara Bermain</button>
+            </div>
+            <div id="how-to-play" style="display: none; text-align: center; margin-top: 20px;">
+                <h2>Cara Bermain</h2>
+                <p>Pilih jenis bangun datar dan kategori soal (Luas, Keliling, atau Campuran). Perhatikan gambar bangun datar dan dimensinya. Hitung luas atau kelilingnya, lalu pilih jawaban yang benar dari pilihan ganda yang tersedia. Anda memiliki 60 detik untuk setiap pertanyaan.</p>
+                <button id="backToMenuButton">Kembali ke Menu</button>
+            </div>
+        </div>
+
+        <div id="game-screen" class="screen">
+            <div class="timer">Waktu: <span id="countdown">60</span> detik</div>
+            <div class="question-area">
+                <h2 id="question-text"></h2>
+                <div class="shape-container">
+                    </div>
+            </div>
+            <div class="options-area" id="options-container">
+                </div>
+            <div id="result-message"></div>
+            <div id="score-display">Skor: <span id="score">0</span></div>
+            <button id="nextQuestionButton" style="display: none;">Lanjut</button> 
+            <button id="backToMenuFromGameButton">Kembali ke Menu Awal</button>
+        </div>
+                <div class="author-credit">
+            <p>Dibuat oleh: Anisa Nursalamah</p>
+        </div>
+    </div>
+    <script src="../assets/sweetalert2.all.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

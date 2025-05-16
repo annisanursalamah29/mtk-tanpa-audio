@@ -1,0 +1,392 @@
+/* Impor Google Fonts untuk tipografi yang lebih baik */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+/* General Styles */
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Nunito', sans-serif; /* Menggunakan font Nunito yang lembut dan modern */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #fecaca 0%, #fecdd3 100%); /* Gradien pink yang lebih lembut dan menarik */
+    color: #333;
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #ffffff; /* Warna putih bersih */
+    padding: 25px; /* Padding lebih besar */
+    border-radius: 15px; /* Sudut lebih membulat */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Bayangan lebih menonjol */
+    text-align: center;
+    max-width: 550px; /* Melebar sedikit untuk menampung konten */
+    width: 95%;
+    max-height: 90vh; /* Mengurangi min-height agar lebih fleksibel */
+    max-height: 95vh; /* Memastikan tidak melebihi viewport */
+    overflow-y: auto; /* Aktifkan scroll vertikal jika konten melebihi */
+    position: relative; /* Untuk positioning tombol kembali */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Memusatkan konten secara vertikal */
+    box-sizing: border-box;
+}
+
+/* Tombol Kembali */
+.kembali-btn {
+    position: absolute; /* Posisi absolut */
+    top: 20px; /* Jarak dari atas */
+    left: 20px; /* Jarak dari kiri */
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px; /* Sudut lebih membulat */
+    cursor: pointer;
+    background-color: #ef4444; /* Warna merah yang kuat */
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 10; /* Pastikan di atas konten lain */
+}
+
+.kembali-btn:hover {
+    background-color: #dc2626; /* Merah lebih gelap saat hover */
+    transform: translateY(-3px); /* Efek angkat sedikit */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.kembali-btn:active {
+    transform: scale(0.96); /* Efek tekan */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Container untuk Game Campur */
+#campurContainer {
+    padding: 15px; /* Padding internal */
+    width: 100%; /* Memastikan lebar penuh dari container utama */
+    flex-grow: 1; /* Membiarkan konten mengambil ruang yang tersedia */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-height: 100%; /* Batasi tinggi agar tidak overflow */
+    box-sizing: border-box;
+}
+
+
+/* Tombol Operasi (Campur) */
+.operation-buttons {
+    margin-bottom: 25px; /* Margin bawah lebih besar */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px; /* Jarak antar tombol operasi */
+}
+
+.operation-buttons button {
+    padding: 12px 20px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px; /* Sudut lebih membulat */
+    cursor: pointer;
+    background-color: #e0f7fa; /* Warna biru muda lembut */
+    color: #00796b; /* Warna teks biru-hijau */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    white-space: nowrap; /* Tetap nowrap untuk simbol operasi */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px; /* Batasi lebar tombol agar tidak terlalu lebar */
+    min-width: 60px;
+    box-sizing: border-box;
+}
+
+.operation-buttons button.active {
+    background-color: #007bff; /* Warna biru cerah saat aktif */
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3); /* Bayangan berwarna untuk aktif */
+    transform: translateY(-2px);
+}
+
+.operation-buttons button:hover {
+    background-color: #b2ebf2; /* Lebih gelap saat hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.operation-buttons button:active {
+    transform: scale(0.96);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Judul Game Campur */
+h1 {
+    margin-bottom: 25px;
+    color: #2c3e50; /* Warna gelap yang elegan */
+    font-size: 2.5em; /* Ukuran font lebih besar */
+    font-weight: 800; /* Sangat tebal */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+/* Pertanyaan (Campur) */
+.question {
+    font-size: 3.5em; /* Lebih besar dan menonjol */
+    margin-bottom: 25px; /* Margin bawah lebih besar */
+    color: #007bff; /* Biru cerah */
+    font-weight: 700; /* Tebal */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    box-sizing: border-box;
+    animation: fadeIn 0.5s ease-out; /* Animasi fade in */
+}
+
+/* Animasi Fade In */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Area Jawaban (Campur) */
+.answer {
+    margin-bottom: 20px; /* Margin bawah lebih besar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.answer input[type="number"] {
+    padding: 12px;
+    border: 2px solid #b0bec5; /* Border lebih tebal dan warna lembut */
+    border-radius: 8px;
+    font-size: 1.4em; /* Ukuran font lebih besar */
+    width: 80%; /* Sesuaikan lebar input */
+    max-width: 280px; /* Lebih lebar */
+    text-align: center;
+    box-sizing: border-box;
+    outline: none; /* Hilangkan outline default */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.answer input[type="number"]:focus {
+    border-color: #007bff; /* Warna border saat fokus */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.4); /* Bayangan lebih kuat saat fokus */
+}
+
+.answer button {
+    padding: 14px 30px; /* Padding lebih besar */
+    border: none;
+    border-radius: 8px;
+    background-color: #28a745; /* Hijau cerah */
+    color: white;
+    cursor: pointer;
+    font-size: 1.3em; /* Ukuran font lebih besar */
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.answer button:hover {
+    background-color: #218838; /* Hijau lebih gelap saat hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.answer button:active {
+    transform: scale(0.96);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Timer (Campur) */
+.timer {
+    font-size: 1.2em; /* Ukuran font lebih besar */
+    margin-bottom: 10px; /* Margin bawah lebih besar */
+    color: #555;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    box-sizing: border-box;
+    animation: pulse 1.5s infinite; /* Animasi pulse untuk menarik perhatian */
+}
+
+/* Animasi Pulse */
+@keyframes pulse {
+    0% { transform: scale(1); color: #555; }
+    50% { transform: scale(1.05); color: #007bff; }
+    100% { transform: scale(1); color: #555; }
+}
+
+/* Hasil (Campur) */
+.result {
+    margin-top: 15px; /* Margin atas lebih besar */
+    font-size: 1.2em; /* Ukuran font lebih besar */
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    box-sizing: border-box;
+    animation: slideInUp 0.6s ease-out; /* Animasi slide in */
+}
+
+/* Animasi Slide In Up */
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.result p {
+    margin: 5px 0; /* Margin sedikit lebih besar antar paragraf */
+    overflow: visible;
+    text-overflow: clip;
+    white-space: nowrap;
+    font-weight: 600; /* Lebih tebal */
+}
+
+.correct {
+    color: #28a745; /* Hijau cerah */
+    font-weight: 800; /* Sangat tebal */
+}
+
+.incorrect {
+    color: #dc3545; /* Merah cerah */
+    font-weight: 800; /* Sangat tebal */
+}
+
+   
+    .author-credit {
+        bottom: 15px; /* Sesuaikan jarak dari bawah untuk layar kecil */
+        font-size: 0.8em;
+        width: calc(100% - 30px); /* Sesuaikan dengan padding container yang berkurang */
+    }
+
+/* Media Queries untuk Responsivitas */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        min-height: 80vh;
+        max-height: 98vh;
+    }
+
+    .kembali-btn {
+        padding: 8px 15px;
+        font-size: 0.9em;
+        top: 15px;
+        left: 15px;
+    }
+
+    .operation-buttons button {
+        padding: 10px 15px;
+        font-size: 1em;
+        max-width: 80px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .question {
+        font-size: 3em;
+    }
+
+    .answer input[type="number"] {
+        padding: 10px;
+        font-size: 1.2em;
+        max-width: 250px;
+    }
+
+    .answer button {
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+
+    .timer {
+        font-size: 1.1em;
+    }
+
+    .result {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        min-height: 90vh;
+    }
+
+    .kembali-btn {
+        padding: 7px 12px;
+        font-size: 0.8em;
+        top: 10px;
+        left: 10px;
+    }
+
+    .operation-buttons {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .operation-buttons button {
+        padding: 8px 12px;
+        font-size: 0.9em;
+        max-width: 70px;
+        min-width: 50px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+
+    .question {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .answer input[type="number"] {
+        padding: 8px;
+        font-size: 1.1em;
+        max-width: 200px;
+    }
+
+    .answer button {
+        padding: 10px 20px;
+        font-size: 1em;
+        margin-top: 12px;
+    }
+
+    .timer {
+        font-size: 1em;
+        margin-bottom: 8px;
+    }
+
+    .result {
+        font-size: 1em;
+        margin-top: 12px;
+    }
+}

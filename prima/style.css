@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    margin: 0; /* Pastikan margin body 0 */
+    color: #333;
+    /* overflow: hidden; /* Tetap hindari ini jika Anda ingin footer terlihat saat konten panjang */
+    box-sizing: border-box; /* Penting: padding dan border tidak menambah ukuran total */
+}
+
+.game-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    width: 90%;
+    max-width: 480px;
+    position: relative;
+    overflow: hidden;
+    transform: translateY(0);
+    animation: fadeInScale 0.8s ease-out forwards;
+    margin: 15px auto; /* Tambahkan sedikit margin vertikal agar tidak menempel ke atas/bawah */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box; /* Penting: padding dan border tidak menambah ukuran total */
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+h1 {
+    background: linear-gradient(45deg, #4CAF50, #2E7D32);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.score,
+.timer {
+    font-size: 1.1em;
+    margin: 0 10px 15px; /* Kurangi margin-bottom sedikit */
+    font-weight: 600;
+    color: #555;
+    display: inline-block;
+}
+
+.timer {
+    color: #FF5722;
+}
+
+.question-box {
+    background-color: #f0f4f8;
+    border: none;
+    padding: 15px; /* Kurangi padding */
+    border-radius: 10px;
+    margin-bottom: 10px; /* Kurangi margin-bottom */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.question-box p {
+    margin: 0 0 8px 0; /* Kurangi margin-bottom */
+    font-size: 1em;
+    color: #666;
+}
+
+#number-to-factor {
+    font-size: 3.5em;
+    font-weight: 700;
+    color: #388E3C;
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Kurangi gap antar tombol */
+    margin-bottom: 5px; /* Kurangi margin-bottom */
+    width: 100%;
+}
+
+.option-button {
+    background-color: #e0f2f7;
+    color: #2196F3;
+    border: none;
+    padding: 12px 15px; /* Kurangi padding */
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.option-button:hover {
+    background-color: #bbdefb;
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+}
+
+.option-button.correct {
+    background-color: #81C784;
+    color: #1B5E20;
+    font-weight: 600;
+    box-shadow: 0 3px 6px rgba(76, 175, 80, 0.25);
+}
+
+.option-button.wrong {
+    background-color: #EF9A9A;
+    color: #B71C1C;
+    font-weight: 600;
+    box-shadow: 0 3px 6px rgba(244, 67, 54, 0.25);
+}
+
+/* Gaya kustom untuk container HTML di SweetAlert */
+.swal2-html-container-custom {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.swal2-html-container-custom div {
+    max-width: 100%;
+    box-sizing: border-box;
+    font-family: 'Consolas', 'Courier New', monospace;
+    background-color: #eef;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    line-height: 1.6;
+    font-size: 1.2em;
+}
+
+.swal2-html-container-custom p {
+    margin: 5px 0;
+    color: #444;
+    font-size: 1.2em;
+}
+
+/* --- Perbaikan Footer --- */
+footer {
+    width: 100%;
+    padding: 10px 0; /* Kurangi padding vertikal lebih banyak */
+    text-align: center;
+    background-color: #f0f0f0;
+    color: #555;
+    font-size: 0.85em; /* Sedikit perkecil font */
+    border-top: 1px solid #ccc;
+    box-sizing: border-box;
+    margin-top: auto;
+}
+
+/* Responsif sederhana */
+@media (max-width: 600px) {
+    .game-container {
+        padding: 15px; /* Kurangi padding di mobile */
+        border-radius: 12px;
+        max-width: 95%;
+        margin: 10px auto; /* Kurangi margin vertikal di mobile */
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+
+    #number-to-factor {
+        font-size: 3em;
+    }
+
+    .score,
+    .timer {
+        font-size: 1em;
+        margin-bottom: 10px; /* Kurangi margin-bottom di mobile */
+    }
+
+    .question-box {
+        padding: 10px; /* Kurangi padding di mobile */
+        margin-bottom: 15px; /* Kurangi margin-bottom di mobile */
+    }
+
+    .question-box p {
+        font-size: 0.9em;
+    }
+
+    .option-button {
+        padding: 10px 12px; /* Kurangi padding di mobile */
+        font-size: 0.95em;
+    }
+
+    .options-container {
+        gap: 6px; /* Kurangi gap di mobile */
+        margin-bottom: 10px; /* Kurangi margin-bottom di mobile */
+    }
+
+    .swal2-html-container-custom {
+        font-size: 0.9em;
+    }
+    .swal2-html-container-custom div {
+        font-size: 0.9em;
+    }
+    .swal2-html-container-custom p {
+        font-size: 0.9em;
+    }
+
+    footer {
+        padding: 8px 0; /* Kurangi padding vertikal lebih banyak pada mobile */
+        font-size: 0.75em; /* Kurangi ukuran font pada mobile */
+    }
+}

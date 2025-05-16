@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Matematika</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="campurContainer">
+            <button id="kembaliBtn" class="kembali-btn">Kembali</button>
+            <div class="operation-buttons">
+                <button id="multiplyBtn" class="active">*</button>
+                <button class="operation-buttons" id="divideBtn">/</button>
+                <button class="operation-buttons" id="addBtn">+</button>
+                <button class="operation-buttons" id="subtractBtn">-</button>
+            </div>
+            <h1> <span id="operationText">Perkalian</span></h1>
+            <div class="question">
+                <span id="angka1"></span> <span id="operator">x</span> <span id="angka2"></span> = ?
+            </div>
+            <div class="answer">
+                <input type="number" id="jawaban" placeholder="Masukkan jawaban Anda">
+                <button id="submitBtn">Jawab</button>
+            </div>
+            <div class="timer">
+                Waktu: <span id="waktu">30</span> detik
+            </div>
+            <div class="result">
+                <p id="pesan"></p>
+                <p>Skor: <span id="skor">0</span></p>
+            </div>
+            
+                    <div class="author-credit">
+            <p>Dibuat oleh: Anisa Nursalamah</p>
+        </div>
+        </div>
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

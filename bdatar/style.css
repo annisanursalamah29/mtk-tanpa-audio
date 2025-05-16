@@ -1,0 +1,507 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --primary-color: #5f7341; /* Hijau */
+    --secondary-color: darkred; /* Merah Tua untuk Timer */
+    --accent-color: #425935; /* Hijau Tua untuk Judul Kecil */
+    --text-color: #333;
+    --bg-color: papayawhip; /* Warna Latar Belakang Body */
+    --container-bg-color: #ebfcd2; /* Warna Latar Belakang Container */
+    --button-hover-bg: #45a049; /* Hijau untuk Hover Tombol */
+    --button-active-bg: #398f3e; /* Hijau Lebih Gelap untuk Active Tombol */
+    --border-radius: 10px;
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Mencegah scroll horizontal dan vertikal pada body */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-color);
+    padding: 0;
+}
+
+.container {
+    width: 98%;
+    max-width: 800px;
+    height: 98%;
+    max-height: 700px;
+    background-color: var(--container-bg-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Pastikan konten tidak melebihi container */
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 2.5em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: var(--accent-color);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1.8em;
+}
+
+/* Screen Management */
+.screen {
+    width: 100%;
+    height: 100%;
+    display: none; /* Default hidden */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    overflow-y: auto; /* Enable vertical scrolling for content overflow */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.screen::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.screen.active {
+    display: flex; /* Show active screen */
+}
+
+/* Menu Screen Styles */
+#menu-screen {
+    /* Ensure menu-screen is active by default or via JS */
+}
+
+.menu-options {
+    text-align: left;
+    margin-bottom: 5px;
+    padding: 15px;
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius);
+    width: 95%;
+    max-width: 500px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.menu-options label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 1.05em;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 3px 0;
+    transition: color 0.2s ease-in-out;
+}
+
+.menu-options label:last-of-type {
+    margin-bottom: 0;
+}
+
+.menu-options label:hover {
+    color: var(--primary-color);
+}
+
+.menu-options input[type="radio"] {
+    margin-right: 8px;
+    transform: scale(1.1);
+    accent-color: var(--primary-color);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.05em;
+    margin: 5px 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+button:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-2px);
+}
+
+button:active {
+    background-color: var(--button-active-bg);
+    transform: translateY(0);
+}
+
+#how-to-play {
+    padding: 15px;
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius);
+    width: 95%;
+    max-width: 600px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+    /* display: none; is handled by JS */
+}
+
+#how-to-play p {
+    font-size: 1em;
+    line-height: 1.5;
+    color: var(--text-color);
+    margin-bottom: 2px;
+}
+
+/* Game Screen Styles */
+#game-screen {
+    /* display: none; handled by JS */
+    justify-content: space-between;
+}
+
+.timer {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: whitesmoke;
+    margin-bottom: 5px;
+    background-color: var(--secondary-color);
+    padding: 6px 12px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.question-area {
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+#question-text {
+    font-size: 1.4em;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+/* --- CSS untuk Bentuk --- */
+.shape-container {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid var(--primary-color);
+}
+
+.square { /* Updated from .rectangle for 'persegi' */
+    width: 100px;
+    height: 100px;
+    background-color: var(--primary-color);
+}
+
+.rectangle {
+    width: 120px;
+    height: 80px;
+    background-color: var(--primary-color);
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+/* Sembunyikan semua bentuk secara default (akan diubah oleh JS) */
+.shape-container > div {
+    display: none;
+}
+/* --- Akhir CSS untuk Bentuk --- */
+
+
+.options-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 95%;
+    max-width: 600px;
+    margin-bottom: 5px;
+}
+
+.options-area button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.05em;
+    background-color: #f0f0f0;
+    color: var(--text-color);
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.options-area button:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.options-area button.correct {
+    background-color: darkgreen;
+    color: white;
+    animation: correct-answer 0.5s ease forwards;
+}
+
+.options-area button.wrong {
+    background-color: #FF5252;
+    color: white;
+    animation: wrong-answer 0.5s ease forwards;
+}
+
+#result-message {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    min-height: 1.5em;
+    color: #FF5252;
+}
+
+#score-display {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: darkgreen;
+    margin-bottom: 5px;
+}
+
+   
+    .author-credit {
+        bottom: 15px; /* Sesuaikan jarak dari bawah untuk layar kecil */
+        font-size: 0.8em;
+        width: calc(100% - 30px); /* Sesuaikan dengan padding container yang berkurang */
+    }
+
+/* Keyframe Animations */
+@keyframes correct-answer {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+@keyframes wrong-answer {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-3px); }
+    100% { transform: translateX(0); }
+}
+
+/* Responsive Design */
+
+/* Large screens (desktop, tablet landscape) */
+@media (min-width: 769px) {
+    .container {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .menu-options {
+        padding: 20px;
+    }
+
+    .menu-options label {
+        margin-bottom: 6px;
+    }
+
+    .options-area {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .shape-container {
+        width: 200px;
+        height: 200px;
+    }
+    .triangle {
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid var(--primary-color);
+    }
+    .square {
+        width: 100px;
+        height: 100px;
+    }
+    .rectangle {
+        width: 120px;
+        height: 80px;
+    }
+    .circle {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Medium screens (tablet portrait, small laptops) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .container {
+        width: 99%;
+        height: 99%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    .menu-options {
+        width: 98%;
+        padding: 15px;
+    }
+
+    .menu-options label {
+        margin-bottom: 5px;
+    }
+
+    .shape-container {
+        width: 150px;
+        height: 150px;
+    }
+    .triangle {
+        border-left: 37.5px solid transparent;
+        border-right: 37.5px solid transparent;
+        border-bottom: 75px solid var(--primary-color);
+    }
+    .square {
+        width: 75px;
+        height: 75px;
+    }
+    .rectangle {
+        width: 90px;
+        height: 60px;
+    }
+    .circle {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+/* Small screens (mobile phones) */
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 5px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 0.95em;
+        margin: 6px 2px;
+    }
+
+    .menu-options {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .menu-options label {
+        font-size: 0.9em;
+        margin-bottom: 3px;
+    }
+
+    .shape-container {
+        width: 100px;
+        height: 100px;
+    }
+    .triangle {
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 50px solid var(--primary-color);
+    }
+    .square {
+        width: 50px;
+        height: 50px;
+    }
+    .rectangle {
+        width: 60px;
+        height: 40px;
+    }
+    .circle {
+        width: 50px;
+        height: 50px;
+    }
+
+    .timer {
+        font-size: 1.1em;
+        padding: 5px 8px;
+    }
+
+    #question-text {
+        font-size: 1.1em;
+        margin-bottom: 8px;
+    }
+
+    .options-area {
+        width: 100%;
+        gap: 6px;
+    }
+
+    .options-area button {
+        padding: 10px;
+        font-size: 0.95em;
+    }
+
+    #how-to-play {
+        padding: 10px;
+        margin-top: 5px;
+    }
+
+    #how-to-play p {
+        font-size: 0.9em;
+        margin-bottom: 5px;
+    }
+}

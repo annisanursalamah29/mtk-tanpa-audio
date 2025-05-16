@@ -1,0 +1,197 @@
+/* Impor Google Fonts untuk tipografi yang lebih baik */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Gaya Dasar Body */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #83a4d4, #b6fbff); /* Latar belakang gradien yang menarik */
+    display: flex;
+    flex-direction: column; /* Tetap sebagai kolom untuk menumpuk konten */
+    min-height: 100vh; /* Pastikan body mengambil tinggi penuh viewport */
+    width: 100vw;
+    overflow-y: auto; /* Izinkan scroll vertikal pada body */
+    overflow-x: hidden; /* Sembunyikan scroll horizontal */
+    color: #333;
+    box-sizing: border-box; /* Pastikan padding tidak menambah ukuran elemen */
+    padding-bottom: 50px; /* PENTING: Beri ruang di bagian bawah body agar konten tidak tertutup footer */
+}
+
+/* Container Utama */
+.container {
+    background-color: #ffffff; /* Warna putih bersih */
+    padding: 25px;
+    border-radius: 15px; /* Sudut lebih membulat */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Bayangan lebih menonjol */
+    text-align: center;
+    width: 95vw;
+    max-width: 450px; /* Sedikit lebih lebar */
+    box-sizing: border-box;
+    overflow-y: auto; /* Biarkan scroll di dalam container jika konten terlalu panjang */
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    flex-grow: 1; /* Biarkan container mengambil ruang yang tersisa */
+    margin: 15px auto; /* Margin vertikal untuk sedikit ruang */
+}
+
+/* Halaman Utama (Main Menu) */
+#mainMenu {
+    margin-bottom: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 15px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+#mainMenu h2 {
+    margin-bottom: 25px;
+    color: #2c3e50;
+    font-size: 2.2em;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* top menu */
+.top-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.top-menu button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.top-menu button.active-category {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Tombol Kategori */
+.category-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.category-buttons .category-btn {
+    padding: 12px 10px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #e0f7fa;
+    color: #00796b;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    max-width: 100%;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.category-buttons .category-btn:hover {
+    background-color: #b2ebf2;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.category-buttons .category-btn:active {
+    transform: scale(0.96);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.category-buttons .active-category {
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* --- Perbaikan Footer Fixed --- */
+footer { /* Pastikan ini adalah selector yang benar untuk footer Anda */
+    width: 100%;
+    padding: 5px 0; /* Sesuaikan padding vertikal agar cukup tinggi */
+    text-align: center;
+    background-color: #f0f0f0;
+    color: #555;
+    font-size: 0.85em;
+    border-top: 1px solid #ccc;
+    box-sizing: border-box;
+    position: fixed; /* Membuat footer tetap di posisi yang ditentukan */
+    bottom: 0;      /* Menempatkan footer di bagian bawah viewport */
+    left: 0;        /* Memastikan footer dimulai dari sisi kiri viewport */
+    z-index: 1000;  /* Memastikan footer berada di atas elemen lain */
+}
+
+
+/* Media Queries untuk Responsivitas */
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 45px; /* Sesuaikan padding-bottom body untuk mobile */
+    }
+    .container {
+        padding: 15px;
+    }
+
+    #mainMenu h2 {
+        font-size: 1.8em;
+    }
+
+    .category-buttons {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 10px;
+    }
+
+    .category-buttons .category-btn {
+        padding: 10px 8px;
+        font-size: 0.95em;
+        min-height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-bottom: 40px; /* Sesuaikan padding-bottom body untuk mobile yang lebih kecil */
+    }
+    .container {
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    #mainMenu h2 {
+        font-size: 1.5em;
+    }
+
+    .category-buttons {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 8px;
+    }
+
+    .category-buttons .category-btn {
+        padding: 8px 5px;
+        font-size: 0.85em;
+        min-height: 35px;
+    }
+}

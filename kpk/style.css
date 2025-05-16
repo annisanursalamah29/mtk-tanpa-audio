@@ -1,0 +1,311 @@
+/* Import Google Font - Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* General Body Styles */
+body {
+    font-family: 'Inter', sans-serif; /* Font modern yang bersih */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0f7fa, #e8f5e9); /* Gradient soft tosca dan mint */
+    margin: 0; /* Menghilangkan margin default browser pada body */
+    padding: 0; /* Menambahkan ini untuk konsistensi */
+    color: #3f4043; /* Warna teks abu-abu gelap yang lembut */
+    overflow: hidden; /* Mencegah scrolling pada seluruh halaman */
+    line-height: 1.6; /* Keterbacaan yang lebih baik */
+}
+
+/* Background Animated Shapes (Minimalist version of bubbles) */
+.animated-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.animated-shapes li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    background: rgba(174, 214, 241, 0.3); /* Warna biru muda transparan */
+    animation: moveShapes 20s linear infinite;
+    bottom: -200px;
+    border-radius: 50%; /* Bentuk lingkaran */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Shadow lembut */
+}
+
+.animated-shapes li:nth-child(1) { left: 15%; width: 60px; height: 60px; animation-delay: 0s; }
+.animated-shapes li:nth-child(2) { left: 30%; width: 30px; height: 30px; animation-delay: 2s; animation-duration: 15s; }
+.animated-shapes li:nth-child(3) { left: 60%; width: 40px; height: 40px; animation-delay: 4s; }
+.animated-shapes li:nth-child(4) { left: 80%; width: 70px; height: 70px; animation-delay: 0s; animation-duration: 22s; }
+.animated-shapes li:nth-child(5) { left: 5%; width: 50px; height: 50px; animation-delay: 6s; }
+.animated-shapes li:nth-child(6) { left: 90%; width: 90px; height: 90px; animation-delay: 3s; animation-duration: 18s; }
+.animated-shapes li:nth-child(7) { left: 45%; width: 25px; height: 25px; animation-delay: 7s; animation-duration: 10s; }
+.animated-shapes li:nth-child(8) { left: 20%; width: 100px; height: 100px; animation-delay: 1s; animation-duration: 25s; }
+
+@keyframes moveShapes {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.7;
+        border-radius: 50%;
+    }
+    100% {
+        transform: translateY(-1200px) rotate(360deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+}
+
+
+/* Container Styles */
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Hampir putih, sedikit transparan */
+    padding: 10px; /* Diperkecil dari 15px */
+    border-radius: 20px; /* Sudut lebih membulat */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); /* Shadow lebih lembut dan menyebar */
+    text-align: center;
+    width: 80%;
+    max-width: 650px; /* Lebar maksimal sedikit lebih besar */
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(8px); /* Efek blur sedikit lebih kuat */
+    animation: fadeInScale 1s ease-out forwards; /* Animasi fade in dan scale */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Border sangat tipis untuk efek 'glassmorphism' */
+    m-height: 90vh; /* Tetapkan tinggi maksimum relatif terhadap viewport */
+    overflow-y: hidden; /* Mencegah scrolling vertikal pada kontainer */
+    overflow-x: hidden; /* Mencegah scrolling horizontal pada kontainer */
+    box-sizing: border-box; /* Pastikan padding dan border tidak menambah ukuran total */
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+h1 {
+    color: #66bb6a; /* Warna hijau pastel */
+    margin-bottom: 5px; /* Tetap 5px */
+    font-size: 2.8em;
+    font-weight: 700; /* Lebih tebal */
+    letter-spacing: -0.02em; /* Sedikit kerning */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+#game-area {
+    border: none; /* Hilangkan border */
+    padding: 10px; /* Tetap 10px */
+    border-radius: 15px;
+    margin-bottom: 5px; /* Tetap 5px */
+    background-color: #fbfcfd; /* Warna background sangat cerah */
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.03), 0 2px 10px rgba(0, 0, 0, 0.05); /* Shadow sangat lembut */
+    display: none;
+    animation: slideInUp 0.8s ease-out forwards; /* Animasi slide in dari bawah */
+    box-sizing: border-box; /* Pastikan padding tidak menambah ukuran total */
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); display: block; }
+}
+
+#question {
+    font-size: 1.9em;
+    margin-bottom: 5px; /* Tetap 5px */
+    color: #5c6066;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+#options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Lebar minimal opsi lebih besar */
+    gap: 10px; /* Tetap 10px */
+    margin-bottom: 5px; /* Tetap 5px */
+}
+
+.option-button {
+    background-color: #81d4fa; /* Biru muda pastel */
+    color: white;
+    border: none;
+    padding: 10px; /* Tetap 10px */
+    font-size: 1.3em;
+    font-weight: 500;
+    border-radius: 10px; /* Sudut lebih membulat */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transisi lebih halus */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Shadow lembut */
+    outline: none;
+    display: flex; /* Untuk centering teks vertikal jika padding berubah */
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; /* Pastikan padding tidak menambah ukuran total */
+}
+
+.option-button:hover {
+    transform: translateY(-5px); /* Naik sedikit lebih banyak */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* Shadow lebih terlihat saat hover */
+    background-color: #4fc3f7; /* Sedikit lebih gelap saat hover */
+}
+
+.option-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background-color: #29b6f6; /* Lebih gelap saat aktif */
+}
+
+#timer, #score {
+    font-size: 1.4em;
+    color: #7f8c8d; /* Warna abu-abu kebiruan */
+    margin-top: 5px; /* Tetap 5px */
+    font-weight: 600;
+}
+
+#start-button {
+    background-color: #a5d6a7; /* Hijau pastel */
+    color: white;
+    border: none;
+    padding: 15px 30px; /* Diperkecil dari 20px 40px */
+    font-size: 1.4em; /* Diperkecil dari 1.6em */
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    outline: none;
+    box-sizing: border-box; /* Pastikan padding tidak menambah ukuran total */
+}
+
+#start-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    background-color: #66bb6a; /* Lebih gelap saat hover */
+}
+
+#start-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background-color: #4caf50; /* Lebih gelap saat aktif */
+}
+
+   
+    .author-credit {
+        bottom: 15px; /* Sesuaikan jarak dari bawah untuk layar kecil */
+        font-size: 0.8em;
+        width: calc(100% - 30px); /* Sesuaikan dengan padding container yang berkurang */
+    }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px; /* Diperkecil dari 35px */
+        max-height: 95vh; /* Tambahan untuk layar kecil */
+    }
+    h1 {
+        font-size: 2em; /* Diperkecil dari 2.2em */
+        margin-bottom: 5px; /* Diperkecil dari 10px */
+    }
+    #question {
+        font-size: 1.4em; /* Diperkecil dari 1.6em */
+        margin-bottom: 5px; /* Diperkecil dari 10px */
+    }
+    #game-area {
+        margin-bottom: 5px; /* Diperkecil dari 5px, tetap 5px */
+        padding: 10px; /* Diperkecil dari 10px, tetap 10px */
+    }
+    .option-button {
+        padding: 10px; /* Diperkecil dari 16px */
+        font-size: 1em; /* Diperkecil dari 1.1em */
+    }
+    #options {
+        gap: 8px; /* Diperkecil dari 15px */
+        margin-bottom: 5px; /* Diperkecil dari 5px, tetap 5px */
+    }
+    #timer, #score {
+        margin-top: 5px; /* Diperkecil dari 8px */
+        font-size: 1.2em; /* Diperkecil dari 1.4em */
+    }
+    #start-button {
+        padding: 10px 20px; /* Diperkecil dari 16px 30px */
+        font-size: 1.2em; /* Diperkecil dari 1.4em */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 8px; /* Diperkecil dari 25px */
+        border-radius: 12px; /* Diperkecil dari 15px */
+        max-height: 98vh; /* Lebih besar untuk layar sangat kecil */
+    }
+    h1 {
+        font-size: 1.5em; /* Diperkecil dari 1.8em */
+        margin-bottom: 5px; /* Diperkecil dari 10px */
+    }
+    #question {
+        font-size: 1.1em; /* Diperkecil dari 1.3em */
+        margin-bottom: 5px; /* Diperkecil dari 10px */
+    }
+    #game-area {
+        padding: 8px; /* Diperkecil dari 20px */
+        border-radius: 10px; /* Diperkecil dari 12px */
+        margin-bottom: 5px; /* Diperkecil dari 10px */
+    }
+    .option-button {
+        padding: 8px; /* Diperkecil dari 14px */
+        font-size: 0.9em; /* Diperkecil dari 1em */
+        border-radius: 6px; /* Diperkecil dari 8px */
+    }
+    #options {
+        gap: 6px; /* Diperkecil dari 15px */
+        margin-bottom: 5px; /* Diperkecil dari 10px */
+    }
+    #timer, #score {
+        font-size: 1em; /* Diperkecil dari 1.2em */
+        margin-top: 3px; /* Diperkecil dari 5px */
+    }
+    #start-button {
+        padding: 10px 20px; /* Diperkecil dari 14px 25px */
+        font-size: 1.1em; /* Diperkecil dari 1.2em */
+        border-radius: 8px;
+    }
+    .animated-shapes li {
+        width: 10px; /* Diperkecil dari 15px */
+        height: 10px; /* Diperkecil dari 15px */
+    }
+    .animated-shapes li:nth-child(1) { width: 30px; height: 30px; }
+    .animated-shapes li:nth-child(2) { width: 15px; height: 15px; }
+    /* Sesuaikan ukuran lainnya jika perlu */
+}
+
+/* SweetAlert2 Customizations */
+/* Mencegah scrolling pada SweetAlert content */
+.swal2-html-container {
+    overflow-x: hidden !important; /* Mencegah horizontal scroll */
+    overflow-y: auto !important;   /* Mengizinkan vertical scroll jika konten sangat panjang,
+                                      tapi tetap terbatas pada tinggi modal SweetAlert.
+                                      Jika Anda benar-benar tidak ingin scroll Y sama sekali,
+                                      ganti 'auto' menjadi 'hidden'. Namun, ini bisa memotong
+                                      konten cara pengerjaan jika terlalu panjang. */
+    max-height: 60vh; /* Batasi tinggi kontainer HTML di SweetAlert */
+    word-wrap: break-word; /* Memastikan teks memecah ke baris berikutnya */
+}
+
+/* Menyesuaikan padding SweetAlert */
+.swal2-popup {
+    padding: 1.25em; /* Padding default adalah sekitar 1.25em, bisa dikurangi */
+    box-sizing: border-box;
+}
+
+.swal2-title {
+    margin-bottom: 0.5em; /* Mengurangi margin bawah judul SweetAlert */
+}
+.swal2-actions {
+    margin-top: 0.8em; /* Mengurangi margin atas tombol actions SweetAlert */
+}
+.swal2-styled.swal2-confirm {
+    padding: 0.6em 1.2em; /* Padding tombol confirm */
+    font-size: 1em;
+}

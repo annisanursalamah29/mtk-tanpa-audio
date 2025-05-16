@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tebak Waktu</title>
+    <link rel="stylesheet" href="../assets/sweetalert2.min.css"> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tebak Waktu!</h1>
+        <div id="menu">
+            <button onclick="startGame('yearToMonth')">Tahun ke Bulan</button>
+            <button onclick="startGame('yearToWeek')">Tahun ke Minggu</button>
+            <button onclick="startGame('yearToDay')">Tahun ke Hari</button>
+            <button onclick="startGame('monthToWeek')">Bulan ke Minggu</button>
+            <button onclick="startGame('monthToDay')">Bulan ke Hari</button>
+            <button onclick="startGame('weekToDay')">Minggu ke Hari</button>
+            <button onclick="startGame('dayToHour')">Hari ke Jam</button>
+            <button onclick="startGame('hourToMinute')">Jam ke Menit</button>
+            <button onclick="startGame('minuteToSecond')">Menit ke Detik</button>
+            <button onclick="startGame('hourToSecond')">Jam ke Detik</button>
+        </div>
+
+        <div id="game" style="display: none;">
+            <p id="question"></p>
+            <div id="choices"></div>
+            <p id="countdown"></p>
+            <p id="score">Skor: 0</p>
+            <div class="game-navigation-buttons">
+                <button id="nextQuestionBtn" onclick="nextQuestion()">Selanjutnya</button>
+                <button id="backToMenuBtn" onclick="resetGame()">Kembali</button>
+            </div>
+        </div>
+
+        <div id="result" style="display: none;">
+            <h2>Waktu Habis!</h2>
+            <p id="correctAnswerDisplay"></p>
+            <button onclick="resetGame()">Main Lagi</button>
+        </div>
+        
+                <div class="author-credit">
+            <p>Dibuat oleh: Anisa Nursalamah</p>
+        </div>
+    </div>
+
+    <script src="../assets/sweetalert2.all.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

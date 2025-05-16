@@ -1,0 +1,340 @@
+/* General Styles */
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Penting untuk tampilan penuh layar */
+    font-family: 'Quicksand', sans-serif; /* Menggunakan font Quicksand yang lembut dan modern */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #e0f7fa 0%, #c5e1a5 100%); /* Gradien hijau-biru yang segar dan menenangkan */
+    color: #333;
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #ffffff; /* Warna putih bersih */
+    padding: 30px; /* Padding lebih besar */
+    border-radius: 20px; /* Sudut sangat membulat untuk tampilan ramah */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18); /* Bayangan lebih menonjol dan lembut */
+    text-align: center;
+    max-width: 600px; /* Melebar sedikit untuk menampung lebih banyak tombol */
+    width: 95%;
+    max-height: 95vh; /* Mengurangi min-height agar lebih fleksibel */
+    max-height: 95vh; /* Memastikan tidak melebihi viewport */
+    overflow-y: auto; /* Aktifkan scroll vertikal jika konten melebihi */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative; /* Untuk tombol kembali jika ditambahkan */
+}
+
+/* Header */
+h1 {
+    color: #2c3e50; /* Warna biru tua yang elegan */
+    margin-bottom: 10px; /* Margin bawah lebih besar */
+    font-size: 2.8em; /* Ukuran font lebih besar */
+    font-weight: 700; /* Lebih tebal */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08); /* Sedikit bayangan teks */
+    font-family: 'Inter', sans-serif; /* Font Inter untuk judul agar lebih tegas */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+h2 { /* Jika ada h2, tambahkan styling */
+    color: #28a745;
+    font-size: 2em;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Operation Buttons (Menu Pecahan) */
+.pecahan-operation-buttons {
+    margin-bottom: 10px; /* Margin bawah lebih besar */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px; /* Jarak antar tombol yang lebih konsisten */
+}
+
+.pecahan-operation-buttons button {
+    background-color: #a7ffeb; /* Warna mint green yang cerah */
+    color: #00796b; /* Warna teks hijau gelap */
+    border: none;
+    padding: 14px 18px; /* Padding lebih besar */
+    border-radius: 10px; /* Sudut lebih membulat */
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Transisi lebih halus */
+    font-weight: 600; /* Lebih tebal */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+    flex: 1 1 45%; /* Memungkinkan tombol memanjang lebih baik, dua kolom */
+    max-width: 160px; /* Batasi lebar maksimum */
+    min-width: 120px; /* Tetapkan lebar minimum */
+    box-sizing: border-box;
+    white-space: nowrap; /* Tetap nowrap agar teks tidak terpotong di baris */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pecahan-operation-buttons button:hover {
+    background-color: #64ffda; /* Lebih gelap saat hover */
+    color: #004d40; /* Teks lebih gelap */
+    transform: translateY(-4px); /* Efek angkat yang lebih terasa */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Bayangan lebih kuat */
+}
+
+.pecahan-operation-buttons button:active {
+    transform: translateY(0); /* Efek tekan */
+    background-color: #1de9b6; /* Warna sedikit berbeda saat ditekan */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pecahan-operation-buttons button.active {
+    background-color: #00c853; /* Hijau cerah untuk tombol aktif */
+    color: white;
+    box-shadow: 0 6px 15px rgba(0, 200, 83, 0.4); /* Bayangan berwarna untuk aktif */
+    transform: translateY(-2px);
+}
+
+/* Question and Timer */
+.question {
+    font-size: 1em; /* Ukuran font sangat besar */
+    margin-bottom: 5px; /* Margin bawah lebih besar */
+    color: #007bff; /* Biru cerah */
+    font-weight: 700; /* Tebal */
+    font-family: 'Inter', sans-serif; /* Menggunakan font Inter untuk pertanyaan agar lebih mudah dibaca */
+    max-width: 100%;
+    box-sizing: border-box;
+    animation: fadeInScale 0.6s ease-out; /* Animasi baru saat pertanyaan muncul */
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+#timer {
+    font-size: 1.4em; /* Ukuran font lebih besar */
+    color: #ef4444; /* Merah yang kuat */
+    margin-bottom: 10px; /* Margin bawah lebih besar */
+    font-weight: 700; /* Sangat tebal */
+    animation: pulseRed 1.5s infinite alternate; /* Animasi pulse merah */
+}
+
+@keyframes pulseRed {
+    0% { transform: scale(1); color: #ef4444; }
+    100% { transform: scale(1.05); color: #dc2626; }
+}
+
+/* Answers */
+.answers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Jarak antar tombol jawaban yang lebih besar */
+    margin-bottom: 10px; /* Margin bawah lebih besar */
+}
+
+.answers button {
+    background-color: #f0f0f0; /* Abu-abu terang */
+    color: #333;
+    border: none;
+    padding: 15px 25px; /* Padding lebih besar */
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.3em; /* Ukuran font lebih besar */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    flex: 0 0 45%; /* Dua kolom dengan sedikit ruang */
+    max-width: 220px; /* Batasi lebar maksimum */
+    min-width: 150px; /* Batas lebar minimum */
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.answers button:hover {
+    background-color: #007bff; /* Biru cerah saat hover */
+    color: white;
+    transform: translateY(-5px); /* Efek angkat yang lebih kuat */
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3); /* Bayangan biru */
+}
+
+.answers button:active {
+    transform: translateY(0);
+    background-color: #0056b3; /* Biru lebih gelap saat ditekan */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button.correct {
+    background-color: #28a745; /* Hijau cerah */
+    color: white;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4); /* Bayangan hijau */
+    animation: bounceIn 0.5s ease-out; /* Animasi saat jawaban benar */
+}
+
+button.incorrect {
+    background-color: #dc3545; /* Merah cerah */
+    color: white;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4); /* Bayangan merah */
+    animation: shake 0.5s ease-out; /* Animasi saat jawaban salah */
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+}
+
+
+/* Result */
+.result {
+    font-size: 1.5em; /* Ukuran font lebih besar */
+    font-weight: bold;
+    color: #333;
+    animation: fadeIn 0.8s ease-out; /* Animasi fade in untuk hasil */
+    padding-top: 10px; /* Sedikit padding di atas hasil */
+}
+
+#pesan-pecahan {
+    color: #17a2b8; /* Warna biru-hijau */
+    margin-bottom: 10px; /* Margin bawah lebih besar */
+    font-weight: 600;
+}
+
+#skor-pecahan {
+    color: #28a745; /* Hijau cerah */
+    font-weight: 700;
+}
+
+   
+    .author-credit {
+        bottom: 15px; /* Sesuaikan jarak dari bawah untuk layar kecil */
+        font-size: 0.8em;
+        width: calc(100% - 30px); /* Sesuaikan dengan padding container yang berkurang */
+    }
+    
+/* Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+        min-height: 80vh;
+        max-height: 98vh;
+        border-radius: 15px;
+    }
+
+    h1 {
+        font-size: 2.2em;
+        margin-bottom: 10px;
+    }
+
+    .pecahan-operation-buttons {
+        gap: 10px;
+        margin-bottom: 25px;
+    }
+
+    .pecahan-operation-buttons button {
+        padding: 12px 15px;
+        font-size: 1em;
+        flex: 1 1 48%; /* Sedikit lebih lebar untuk 2 kolom */
+        max-width: 150px;
+        min-width: 100px;
+    }
+
+    .question {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+    }
+
+    #timer {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+
+    .answers {
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .answers button {
+        padding: 12px 20px;
+        font-size: 1.1em;
+        flex: 0 0 48%; /* Dua kolom yang lebih rapat */
+        max-width: 180px;
+        min-width: 120px;
+    }
+
+    .result {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        min-height: 90vh;
+        border-radius: 10px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+
+    .pecahan-operation-buttons {
+        gap: 8px;
+        margin-bottom: 10px;
+    }
+
+    .pecahan-operation-buttons button {
+        padding: 10px 12px;
+        font-size: 0.9em;
+        flex: 1 1 45%; /* Tetap 2 kolom, sedikit lebih rapat */
+        max-width: unset; /* Biarkan flexbox menyesuaikan */
+        min-width: 80px;
+    }
+
+    .question {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+
+    #timer {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    .answers {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+
+    .answers button {
+        padding: 10px 15px;
+        font-size: 1em;
+        flex: 0 0 47%; /* Dua kolom yang lebih rapat */
+        max-width: unset;
+        min-width: 100px;
+    }
+
+    .result {
+        font-size: 1.1em;
+    }
+}

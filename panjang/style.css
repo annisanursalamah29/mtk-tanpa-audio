@@ -1,0 +1,386 @@
+/* Import Google Fonts untuk tipografi yang lebih menarik */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap');
+
+/* Reset dasar untuk memastikan konsistensi antar browser */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Mencegah scrolling di body */
+    -webkit-overflow-scrolling: touch; /* Memastikan scrolling yang halus di iOS */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #e0f2f7, #b2ebf2); /* Gradien latar belakang */
+    color: #424242; /* Warna teks default */
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased; /* Peningkatan anti-aliasing font untuk Webkit */
+    -moz-osx-font-smoothing: grayscale; /* Peningkatan anti-aliasing font untuk Firefox */
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.98); /* Latar belakang semi-transparan */
+    padding: 25px 35px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    border: none;
+    max-height: 90vh; /* Batasi tinggi maksimal container */
+    overflow-y: auto; /* Aktifkan scrolling jika konten melebihi tinggi */
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #26a69a; /* Warna judul */
+    margin-bottom: 10px;
+    font-size: 2.4em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.03);
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+#game-area {
+    margin-top: 5px;
+}
+
+#score-area, #timer-area {
+    font-size: 1.3em;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #616161;
+}
+
+#score-area span, #timer-area span {
+    color: #4caf50; /* Warna hijau untuk skor dan waktu */
+    font-weight: 700;
+}
+
+#question-area {
+    background: linear-gradient(45deg, #f0f4f7, #e8f0f5); /* Gradien latar belakang area pertanyaan */
+    border: 1px solid #cfd8dc;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.04); /* Inner shadow */
+}
+
+#question {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #37474f; /* Warna teks pertanyaan */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+#options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Jarak antar tombol opsi */
+    margin-top: 5px;
+}
+
+/* Gaya untuk Tombol Pilihan (Option Button) */
+.option-button {
+    background: linear-gradient(135deg, #6ad5ea 0%, #a7d9ed 100%); /* Gradien latar belakang yang lebih modern dan sedikit lebih lembut */
+    color: #37474f; /* Warna teks yang kontras */
+    border: none;
+    padding: 12px 20px; /* Padding yang sedikit lebih kecil untuk tampilan ramping */
+    border-radius: 8px; /* Border-radius yang lebih konsisten */
+    font-size: 1.05em; /* Ukuran font sedikit disesuaikan */
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transisi yang lebih halus dan responsif */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Shadow yang lebih lembut dan menyebar */
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden; /* Penting untuk efek kilau dan elipsis */
+    text-align: center; /* Pastikan teks di tengah */
+    white-space: nowrap; /* Mencegah teks melipat ke baris baru */
+    text-overflow: ellipsis; /* Tambahkan elipsis jika teks terpotong */
+}
+
+/* Efek kilau pada tombol */
+.option-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Awalnya di luar tombol */
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2); /* Warna kilau yang sedikit lebih kuat */
+    transform: skewX(-30deg); /* Sudut kilau yang sedikit lebih tajam */
+    transition: all 0.4s ease-out; /* Transisi kilau yang lebih lambat dan elegan */
+}
+
+/* Efek saat hover */
+.option-button:hover:not(:disabled) {
+    background: linear-gradient(135deg, #a7d9ed 0%, #6ad5ea 100%); /* Balik gradien saat hover */
+    transform: translateY(-3px); /* Efek angkat yang lebih halus */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* Shadow yang sedikit lebih besar saat hover */
+}
+
+.option-button:hover:not(:disabled)::before {
+    left: 100%; /* Pindahkan kilau melintasi tombol */
+}
+
+/* Efek saat tombol aktif (diklik) */
+.option-button:active:not(:disabled) {
+    transform: translateY(-1px); /* Efek tekan yang lebih halus */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Shadow yang lebih kecil saat aktif */
+}
+
+/* Gaya untuk tombol yang dinonaktifkan */
+.option-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6; /* Sedikit lebih transparan saat dinonaktifkan */
+    background: #e0e0e0 !important; /* Warna latar belakang abu-abu */
+    color: #a0a0a0; /* Warna teks abu-abu */
+    box-shadow: none !important;
+    transform: none !important;
+    filter: grayscale(30%);
+}
+
+/* Gaya untuk tombol jawaban yang benar */
+.option-button.correct {
+    background: linear-gradient(135deg, #81c784 0%, #66bb6a 100%); /* Gradien hijau yang lebih lembut */
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.25);
+    animation: pulse-correct 0.7s forwards; /* Animasi yang sedikit lebih lama */
+    color: #ffffff; /* Teks putih untuk kontras lebih baik */
+}
+
+/* Gaya untuk tombol jawaban yang salah */
+.option-button.incorrect {
+    background: linear-gradient(135deg, #ef9a9a 0%, #e57373 100%); /* Gradien merah yang lebih lembut */
+    box-shadow: 0 5px 15px rgba(244, 67, 54, 0.25);
+    animation: shake 0.5s ease-in-out; /* Animasi sedikit lebih lama */
+    color: #ffffff; /* Teks putih untuk kontras lebih baik */
+}
+
+/* Keyframes untuk animasi pulse-correct (sedikit disesuaikan) */
+@keyframes pulse-correct {
+    0% { transform: scale(1); box-shadow: 0 5px 15px rgba(76, 175, 80, 0.25); }
+    50% { transform: scale(1.01); box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4); }
+    100% { transform: scale(1); box-shadow: 0 5px 15px rgba(76, 175, 80, 0.25); }
+}
+
+/* Keyframes untuk animasi shake (sedikit disesuaikan) */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+#start-button {
+    background: linear-gradient(45deg, #ffcc80, #ffb74d); /* Gradien latar belakang */
+    color: #6d4c41; /* Warna teks */
+    border: none;
+    padding: 16px 30px;
+    border-radius: 12px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    margin-top: 10px;
+    box-shadow: 0 8px 20px rgba(255, 183, 77, 0.3);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+#start-button:hover {
+    background: linear-gradient(45deg, #ffb74d, #ffcc80);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(255, 183, 77, 0.45);
+}
+#start-button:active {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 183, 77, 0.2);
+}
+
+/* Gaya untuk tombol "Lanjut" */
+#next-question-button {
+    background: linear-gradient(45deg, #66bb6a, #43a047); /* Warna hijau */
+    color: #ffffff; /* Warna teks putih */
+    border: none;
+    padding: 16px 30px;
+    border-radius: 12px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    margin-top: 20px; /* Beri sedikit jarak dari area pertanyaan/opsi */
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3); /* Shadow hijau */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width: auto; /* Sesuaikan lebar dengan konten */
+    display: block; /* Buat tombol menjadi blok untuk centering */
+    margin-left: auto; /* Centering */
+    margin-right: auto; /* Centering */
+}
+
+#next-question-button:hover {
+    background: linear-gradient(45deg, #43a047, #66bb6a);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(76, 175, 80, 0.45);
+}
+
+#next-question-button:active {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(76, 175, 80, 0.2);
+}
+
+#feedback {
+    display: none; /* Elemen ini tidak lagi digunakan secara langsung */
+}
+
+/* Sembunyikan elemen awal */
+#question-area, #score-area, #timer-area {
+    display: none;
+}
+
+/* SweetAlert2 Custom Classes untuk mengatasi scrolling dan tampilan */
+.swal2-container-custom {
+    height: 100vh !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+.swal2-popup-custom {
+    max-height: 90vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 90%;
+    max-width: 600px; /* Konsisten dengan container */
+    border-radius: 20px !important; /* Konsisten dengan container */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1) !important;
+    background-color: rgba(255, 255, 255, 0.98) !important;
+}
+
+.swal2-title-custom {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 1.8em !important;
+    color: #26a69a !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.swal2-html-container-custom {
+    text-align: left;
+    font-size: 1em;
+    line-height: 1.6;
+    padding: 15px 20px;
+    word-break: break-word;
+    color: #424242;
+}
+
+/* Gaya untuk teks penjelasan di dalam SweetAlert */
+.explanation-answer {
+    font-weight: 700;
+    color: #42a5f5; /* Warna biru untuk jawaban yang Anda pilih */
+    font-size: 1.1em;
+}
+
+.explanation-correct {
+    font-weight: 700;
+    color: #4caf50; /* Warna hijau untuk jawaban yang benar */
+    font-size: 1.1em;
+}
+
+.explanation-wrong {
+    font-weight: 700;
+    color: #ff7043; /* Warna oranye-merah untuk jawaban yang salah */
+    text-decoration: line-through; /* Efek coret */
+    font-size: 1.1em;
+}
+
+   
+    .author-credit {
+        bottom: 15px; /* Sesuaikan jarak dari bawah untuk layar kecil */
+        font-size: 0.8em;
+        width: calc(100% - 30px); /* Sesuaikan dengan padding container yang berkurang */
+    }
+
+/* Responsivitas umum */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 25px;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    #question {
+        font-size: 1.4em;
+    }
+    /* Media query untuk tombol opsi */
+    .option-button {
+        padding: 10px 18px;
+        font-size: 0.95em;
+        border-radius: 7px;
+    }
+    #start-button {
+        font-size: 1.1em;
+        padding: 15px 25px;
+    }
+    #next-question-button {
+        font-size: 1.1em;
+        padding: 15px 25px;
+        margin-top: 15px;
+    }
+    .swal2-title-custom {
+        font-size: 1.6em !important;
+    }
+    .swal2-html-container-custom {
+        font-size: 0.95em;
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px 20px;
+    }
+    h1 {
+        font-size: 1.6em;
+    }
+    #question {
+        font-size: 1.2em;
+    }
+    /* Media query untuk tombol opsi */
+    .option-button {
+        padding: 8px 15px;
+        font-size: 0.85em;
+        border-radius: 6px;
+    }
+    #start-button {
+        font-size: 1em;
+        padding: 12px 20px;
+    }
+    #next-question-button {
+        font-size: 1em;
+        padding: 12px 20px;
+        margin-top: 10px;
+    }
+    .swal2-title-custom {
+        font-size: 1.4em !important;
+    }
+    .swal2-html-container-custom {
+        font-size: 0.85em;
+        padding: 8px 10px;
+    }
+}

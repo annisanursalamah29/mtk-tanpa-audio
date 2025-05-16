@@ -1,0 +1,511 @@
+/* Impor Google Fonts untuk tipografi yang lebih baik */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap');
+
+/* Reset dasar untuk menghilangkan margin dan padding bawaan browser */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Memastikan padding dan border termasuk dalam lebar/tinggi elemen */
+}
+
+/* Mencegah scrolling pada body dan html */
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Sembunyikan overflow secara default untuk tampilan penuh layar */
+    font-family: 'Nunito', sans-serif; /* Menggunakan font Nunito yang lembut dan modern */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Menengahkan secara vertikal dan horizontal */
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); /* Gradien abu-abu terang yang lembut */
+    color: #333;
+    min-width: 320px; /* Mencegah elemen menjadi terlalu sempit pada viewport yang sangat kecil */
+}
+
+.container {
+    text-align: center;
+    padding: 5px; /* Padding lebih besar */
+    background-color: #ffffff;
+    border-radius: 15px; /* Sudut lebih membulat */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Bayangan lebih menonjol dan lembut */
+    width: 90vw; /* Lebar container relatif terhadap viewport width */
+    max-width: 700px; /* Batasi lebar maksimum untuk layar besar */
+    max-height: 95vh; /* Batasi tinggi container relatif terhadap viewport height */
+    overflow-y: auto; /* Izinkan scrolling vertikal hanya jika konten melebihi tinggi container */
+    overflow-x: hidden; /* Pastikan tidak ada scrolling horizontal dalam container */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Memusatkan konten secara horizontal */
+    justify-content: flex-start; /* Mulai konten dari atas, agar menu tetap di atas */
+    flex-shrink: 0;
+}
+
+h1 {
+    margin-bottom: 10px; /* Margin bawah lebih besar */
+    color: #5e35b1; /* Warna ungu yang menarik */
+    font-size: 2.8em; /* Ukuran font lebih besar */
+    font-family: 'Playfair Display', serif; /* Font Playfair Display untuk judul agar lebih elegan */
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+/* --- BAGIAN MENU (TIDAK DIUBAH SECARA DRATIS) --- */
+/* Styles dari kode asli Anda, dengan beberapa penyesuaian visual yang aman */
+#menu {
+    display: flex;
+    flex-wrap: wrap; /* Izinkan tombol membungkus ke baris berikutnya */
+    justify-content: center; /* Pusatkan tombol secara horizontal */
+    gap: 10px; /* Jarak antar tombol, sama seperti asli */
+    width: 100%; /* Tetap mengambil lebar penuh */
+    padding: 0 10px; /* Padding horizontal, sama seperti asli */
+    margin-bottom: 10px;
+}
+
+#menu button {
+    /* Propertai yang menjaga layout asli: */
+    flex: 1 1 auto; /* Memungkinkan tombol untuk tumbuh dan menyusut */
+    min-width: 140px; /* Lebar minimum untuk setiap tombol */
+    max-width: calc(50% - 5px); /* Kalkulasi lebar untuk 2 tombol per baris, sama seperti asli */
+    display: block; /* Penting untuk menjaga perilaku display bawaan */
+    flex-shrink: 0; /* Mencegah tombol menyusut di bawah kontennya */
+
+    /* Penyesuaian visual yang aman: */
+    padding: 12px 10px; /* Padding sedikit lebih baik */
+    border: none;
+    border-radius: 8px; /* Sudut lebih membulat */
+    background-color: #8a56bf; /* Warna ungu yang sedikit lebih gelap dari sebelumnya untuk kontras */
+    color: white;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Menambahkan transisi untuk hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+    font-weight: 600; /* Sedikit lebih tebal */
+}
+
+#menu button:hover {
+    background-color: #673ab7; /* Ungu lebih gelap saat hover */
+    transform: translateY(-3px); /* Efek angkat sedikit */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+#menu button:active {
+    transform: translateY(0); /* Efek tekan */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* --- BAGIAN MENU BERAKHIR --- */
+
+
+/* --- STYLING UNTUK GAME AREA --- */
+#game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 10px;
+}
+
+#game p {
+    margin-bottom: 20px; /* Margin bawah lebih besar */
+    font-size: 1.3em; /* Ukuran font lebih besar */
+    font-weight: 500;
+    color: #444;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+#question {
+    font-weight: 700;
+    color: #007bff; /* Biru cerah */
+    font-size: 2em; /* Ukuran font sangat besar untuk pertanyaan */
+    margin-bottom: 30px;
+    animation: fadeIn 0.5s ease-out; /* Animasi fade in */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#choices {
+    display: flex; /* Kembali ke flexbox */
+    flex-wrap: wrap; /* Izinkan pilihan membungkus ke baris berikutnya */
+    justify-content: center;
+    gap: 15px; /* Jarak antar tombol pilihan */
+    margin-bottom: 30px; /* Margin bawah lebih besar */
+    width: 100%;
+    padding: 0 5px;
+}
+
+#choices button {
+    flex: 1 1 auto; /* Memungkinkan tombol untuk tumbuh dan menyusut */
+    min-width: 140px; /* Lebar minimum untuk tombol pilihan */
+    max-width: calc(50% - 10px); /* 50% dikurangi gap agar 2 kolom */
+    padding: 15px 20px;
+    background-color: #e0f7fa; /* Biru muda yang lembut */
+    border: none;
+    border-radius: 10px;
+    color: #00796b; /* Hijau-biru */
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    white-space: normal; /* Memungkinkan teks membungkus */
+    overflow: visible;
+    text-overflow: clip;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 55px; /* Tinggi minimum untuk konsistensi */
+    text-align: center;
+}
+
+#choices button:hover {
+    background-color: #b2ebf2; /* Lebih gelap saat hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+#choices button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Warna untuk pilihan yang dipilih oleh pengguna */
+#choices button.selected {
+    border: 2px solid #007bff; /* Border biru untuk pilihan yang dipilih */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Efek bayangan */
+}
+
+/* Warna untuk tombol jawaban yang BENAR */
+#choices button.correct {
+    background-color: #28a745; /* Hijau */
+    color: white;
+    border: 2px solid #218838;
+    animation: bounceIn 0.5s ease-out; /* Animasi saat jawaban benar */
+}
+
+/* Warna untuk tombol jawaban yang SALAH (pilihan pengguna jika salah) */
+#choices button.incorrect {
+    background-color: #dc3545; /* Merah */
+    color: white;
+    border: 2px solid #c82333;
+    animation: shake 0.5s ease-out; /* Animasi saat jawaban salah */
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+}
+
+#score {
+    font-size: 1.2em;
+    color: #28a745; /* Hijau */
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+#countdown {
+    font-size: 1.8em; /* Ukuran font lebih besar */
+    font-weight: 700;
+    color: #ef4444; /* Merah yang kuat */
+    margin-bottom: 25px;
+    animation: pulseRed 1.5s infinite alternate; /* Animasi pulse merah */
+}
+
+@keyframes pulseRed {
+    0% { transform: scale(1); color: #ef4444; }
+    100% { transform: scale(1.05); color: #dc2626; }
+}
+
+/* Styling untuk container tombol navigasi di game */
+.game-navigation-buttons {
+    display: flex;
+    justify-content: space-around; /* Jarak antar tombol merata */
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0 5px;
+}
+
+#nextQuestionBtn, #backToMenuBtn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    margin: 0 8px; /* Jarak antar tombol */
+    max-width: 200px; /* Batasi lebar maksimum */
+}
+
+#nextQuestionBtn {
+    background-color: #007bff; /* Biru cerah */
+}
+
+#nextQuestionBtn:hover {
+    background-color: #0056b3; /* Biru lebih gelap */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+#nextQuestionBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#backToMenuBtn {
+    background-color: #6c757d; /* Abu-abu */
+}
+
+#backToMenuBtn:hover {
+    background-color: #5a6268; /* Abu-abu lebih gelap */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+#backToMenuBtn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* --- STYLING UNTUK RESULT AREA --- */
+#result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 10px;
+}
+
+#result h2 {
+    color: #dc3545; /* Merah */
+    font-size: 2.2em; /* Ukuran font lebih besar */
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+#result p {
+    font-size: 1.2em;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+#result button { /* Tombol 'Main Lagi' di halaman hasil */
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    background-color: #28a745; /* Hijau */
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#result button:hover {
+    background-color: #218838; /* Hijau lebih gelap */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+#result button:active {
+    transform: scale(0.96);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Media Queries untuk Responsivitas */
+
+/* Untuk layar yang lebih kecil dari 768px (biasanya handphone) */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        width: 95vw;
+        max-height: 98vh;
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 2.2em;
+        margin-bottom: 25px;
+    }
+
+    /* --- MEDIA QUERY UNTUK MENU (TIDAK DIUBAH SECARA DRATIS) --- */
+    #menu {
+        gap: 10px; /* Jarak antar tombol */
+    }
+    #menu button {
+        /* Menjaga agar responsivitas tetap ada dan tidak terpotong */
+        flex: 1 1 45%; /* Dua kolom dengan sedikit margin antar tombol */
+        max-width: unset; /* Hapus max-width agar flexbox bisa menyesuaikan */
+        min-width: 120px; /* Batas minimum agar tidak terlalu kecil */
+        padding: 10px 15px;
+        font-size: 1em;
+        min-height: 55px;
+    }
+    /* --- MEDIA QUERY UNTUK MENU BERAKHIR --- */
+
+    #game p {
+        font-size: 1.1em;
+        margin-bottom: 15px;
+    }
+
+    #question {
+        font-size: 1.8em;
+        margin-bottom: 25px;
+    }
+
+    #choices {
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+
+    #choices button {
+        padding: 12px 15px;
+        font-size: 1em;
+        min-height: 50px;
+        flex: 1 1 45%; /* Tetap dua kolom */
+        max-width: unset;
+    }
+
+    #score {
+        font-size: 1.1em;
+    }
+
+    #countdown {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+
+    .game-navigation-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #nextQuestionBtn, #backToMenuBtn {
+        padding: 10px 20px;
+        font-size: 1em;
+        max-width: 100%;
+        margin: 0;
+    }
+
+    #result h2 {
+        font-size: 2em;
+    }
+
+    #result p {
+        font-size: 1em;
+    }
+
+    #result button {
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+}
+   
+    .author-credit {
+        bottom: 15px; /* Sesuaikan jarak dari bawah untuk layar kecil */
+        font-size: 0.8em;
+        width: calc(100% - 30px); /* Sesuaikan dengan padding container yang berkurang */
+    }
+    
+
+/* Untuk layar yang lebih kecil dari 480px (handphone sangat kecil) */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+
+    /* --- MEDIA QUERY UNTUK MENU (TIDAK DIUBAH SECARA DRATIS) --- */
+    #menu {
+        gap: 8px;
+    }
+    #menu button {
+        flex: 1 1 100%; /* Satu kolom untuk layar sangat kecil */
+        padding: 10px 15px;
+        font-size: 0.95em;
+        min-height: 45px; /* Tinggi minimum agar tidak terlalu kecil */
+    }
+    /* --- MEDIA QUERY UNTUK MENU BERAKHIR --- */
+
+    #game p {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    #question {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+    }
+
+    #choices {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    #choices button {
+        padding: 10px 15px;
+        font-size: 0.9em;
+        min-height: 45px;
+        flex: 1 1 100%; /* Satu kolom */
+        max-width: unset;
+    }
+
+    #score {
+        font-size: 1em;
+    }
+
+    #countdown {
+        font-size: 1.3em;
+        margin-bottom: 15px;
+    }
+
+    .game-navigation-buttons {
+        gap: 8px;
+    }
+
+    #nextQuestionBtn, #backToMenuBtn {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    #result h2 {
+        font-size: 1.8em;
+    }
+
+    #result p {
+        font-size: 0.9em;
+    }
+
+    #result button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Matematika</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="mainMenu">
+            <h2>Selamat Datang di Game Matematika!</h2>
+            <div class="top-menu">
+                <button id="rumahCategoryBtn" class="category-btn">Rumah</button>
+                <button id="tajwidCategoryBtn" class="category-btn">Tajwid</button>
+                <button id="iqroCategoryBtn" class="category-btn">Iqro</button>
+                <button id="bacalahCategoryBtn" class="category-btn">Bacalah</button>
+            </div>
+            <div class="category-buttons">
+                <button id="deretCategoryBtn" class="category-btn active-category">Deret</button>
+                <button id="bruangCategoryBtn" class="category-btn">B. Ruang</button>
+                <button id="bdatarCategoryBtn" class="category-btn">B Datar</button>
+                <button id="romawiCategoryBtn" class="category-btn">Romawi</button>
+                <button id="waktuCategoryBtn" class="category-btn">Waktu</button>
+                <button id="algoritmaCategoryBtn" class="category-btn">Algoritma</button>
+                <button id="panjangCategoryBtn" class="category-btn">Panjang</button>
+                <button id="beratCategoryBtn" class="category-btn">Berat</button>
+                <button id="campuranCategoryBtn" class="category-btn">Campuran</button>
+                <button id="pecahanCategoryBtn" class="category-btn">Pecahan</button>
+                <button id="kpkCategoryBtn" class="category-btn">KPK FPB</button>
+                <button id="primaCategoryBtn" class="category-btn">Prima</button>
+                <button id="skalaCategoryBtn" class="category-btn">Skala</button>
+                <button id="akarCategoryBtn" class="category-btn">Akar</button>
+                <button id="aljabarCategoryBtn" class="category-btn">Aljabar</button>
+                <button id="phytagorasCategoryBtn" class="category-btn">Phytagoras</button>
+                <button id="matriksCategoryBtn" class="category-btn">Matriks</button>
+                <button id="vektorCategoryBtn" class="category-btn">Vektor</button>
+                <button id="trigonometriCategoryBtn" class="category-btn">Trigonometri</button>
+                <button id="kalkulusCategoryBtn" class="category-btn">Kalkulus</button>
+                <button id="geometrikCategoryBtn" class="category-btn">Geometrik</button>
+                <button id="statistikaCategoryBtn" class="category-btn">Statistika</button>
+                <button id="peluangCategoryBtn" class="category-btn">Peluang</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtonsContainer = document.querySelector('.category-buttons');
+            const topMenuContainer = document.querySelector('.top-menu');
+
+            const handleCategoryClick = function(event) {
+                const clickedButton = event.target;
+
+                if (clickedButton.classList.contains('category-btn')) {
+                    // Hapus kelas 'active-category' dari semua tombol
+                    document.querySelectorAll('.category-btn').forEach(btn => {
+                        btn.classList.remove('active-category');
+                    });
+
+                    // Tambahkan kelas 'active-category' ke tombol yang diklik
+                    clickedButton.classList.add('active-category');
+
+                    // Mengambil nama kategori dari ID tombol
+                    const categoryName = clickedButton.id.replace('CategoryBtn', '').toLowerCase();
+
+                    // Arahkan ke halaman yang sesuai
+                    window.location.href = `${categoryName}/index.html`;
+                }
+            };
+
+            if (categoryButtonsContainer) {
+                categoryButtonsContainer.addEventListener('click', handleCategoryClick);
+            }
+
+            if (topMenuContainer) {
+                topMenuContainer.addEventListener('click', handleCategoryClick);
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+    
+    <footer> <p>&copy; 2025 Dibuat oleh Anisa Nursalamah</p>
+    </footer>
+</body>
+</html>

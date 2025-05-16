@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teleprompter App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="menu-controls">
+            <button id="loadText1">Iqro 1</button>
+            <button id="loadText2">Iqro 2</button>
+            <button id="loadText3">Iqro 3</button>
+            <button id="loadText4">Iqro 4</button>
+            <button id="loadText5">Iqro 5</button>
+            <button id="loadText6">Iqro 6</button>
+        </div>
+        <div class="teleprompter-controls">
+            <div class="speed-control">
+                <label for="scrollSpeed">Kecepatan Gulir:</label>
+                <input type="range" id="scrollSpeed" min="1" max="10" value="5">
+                <span id="currentSpeed">5</span>
+            </div>
+            <button id="playPauseBtn">Mulai</button>
+            <button id="resetBtn">Reset</button>
+        </div>
+        <div class="teleprompter-display">
+            <div id="teleprompterText"></div>
+        </div>
+        <div class="author-credit">
+            <p>Dibuat oleh: Anisa Nursalamah</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

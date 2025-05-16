@@ -1,0 +1,186 @@
+:root {
+    --primary-color: #7DA4DC; /* Biru soft */
+    --secondary-color: #A3D9D9; /* Tosca soft */
+    --accent-color: #F8B400; /* Kuning soft untuk highlight/tombol */
+    --text-color: #4A4A4A; /* Abu-abu gelap */
+    --background-color: #E6EEF5; /* Abu-abu kebiruan sangat soft */
+    --light-grey: #F0F0F0;
+    --border-color: #DDE2E7;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font lebih modern */
+    font-size: 0.95em; /* Mengurangi ukuran font dasar body */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    background-color: #FFFFFF;
+    padding: 5px; /* Padding sedikit lebih kecil */
+    margin: 10px; /* Margin eksternal agar tidak terlalu mepet */
+    border-radius: 12px; /* Border radius lebih besar */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Bayangan lebih halus */
+    text-align: center;
+    width: 95%; /* Lebar sedikit lebih besar */
+    max-width: 650px; /* Maksimal lebar */
+    box-sizing: border-box; /* Pastikan padding tidak menambah lebar total */
+    min-height: 90vh; /* Perbaikan dari m-height */
+}
+
+h1 {
+    font-size: 1.6em; /* Ukuran font judul sedikit lebih kecil */
+    color: var(--primary-color);
+    margin-bottom: 15px; /* Margin bawah judul */
+    letter-spacing: -0.5px; /* Sedikit spasi huruf */
+}
+
+.game-area {
+    margin-top: 10px;
+}
+
+#question-text {
+    font-size: 1.2em; /* Ukuran font pertanyaan lebih kecil */
+    margin-bottom: 5px;
+    font-weight: 600; /* Sedikit lebih tebal */
+    color: var(--text-color);
+    min-height: 60px; /* Memberikan ruang lebih agar teks tidak lompat saat dimuat */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer, .score {
+    font-size: 1.1em; /* Ukuran font timer dan score lebih kecil */
+    margin-bottom: 12px; /* Margin sedikit lebih kecil */
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Jarak antar tombol lebih rapi */
+    margin-top: 15px;
+}
+
+.option-button {
+    background-color: var(--light-grey);
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* Border radius tombol */
+    padding: 12px 20px; /* Padding tombol sedikit lebih kecil */
+    font-size: 1em; /* Ukuran font tombol opsi lebih kecil */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transisi untuk hover dan aktif */
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.option-button:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #FFFFFF;
+    transform: translateY(-2px); /* Efek interaktif saat hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.option-button:active {
+    background-color: darken(var(--primary-color), 10%); /* Efek klik */
+    transform: translateY(0);
+}
+
+.option-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    background-color: var(--light-grey);
+    border-color: var(--border-color);
+    color: var(--text-color);
+    transform: none;
+    box-shadow: none;
+}
+
+#start-button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 30px; /* Padding tombol start lebih kecil */
+    font-size: 1.1em; /* Ukuran font tombol start lebih kecil */
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(var(--accent-color), 0.3);
+}
+
+#start-button:hover {
+    background-color: darken(var(--accent-color), 5%); /* Sedikit lebih gelap saat hover */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(var(--accent-color), 0.4);
+}
+
+#start-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(var(--accent-color), 0.2);
+}
+
+footer { /* Pastikan ini adalah selector yang benar untuk footer Anda */
+    width: 100%;
+    padding: 5px 0; /* Sesuaikan padding vertikal agar cukup tinggi */
+    text-align: center;
+    background-color: #f0f0f0;
+    color: #555;
+    font-size: 0.8em; /* Ukuran font footer lebih kecil */
+    border-top: 1px solid #ccc;
+    box-sizing: border-box;
+    position: fixed; /* Membuat footer tetap di posisi yang ditentukan */
+    bottom: 0;      /* Menempatkan footer di bagian bawah viewport */
+    left: 0;        /* Memastikan footer dimulai dari sisi kiri viewport */
+    z-index: 1000;  /* Memastikan footer berada di atas elemen lain */
+}
+
+/* Penyesuaian SweetAlert2 (opsional, karena SweetAlert2 punya stylenya sendiri) */
+.swal2-popup {
+    font-family: 'Segoe UI', sans-serif;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.swal2-title {
+    color: var(--primary-color) !important;
+    font-size: 1.6em !important; /* Ukuran font judul SweetAlert2 lebih kecil */
+}
+
+.swal2-html-container {
+    color: var(--text-color) !important;
+    font-size: 1em !important; /* Ukuran font konten SweetAlert2 lebih kecil */
+    text-align: left !important; /* Agar detail soal terlihat rapi */
+    padding: 0 20px !important;
+}
+
+.swal2-confirm {
+    background-color: var(--accent-color) !important;
+    font-size: 1em !important; /* Ukuran font tombol konfirmasi SweetAlert2 lebih kecil */
+    padding: 10px 25px !important;
+    border-radius: 8px !important;
+}
+
+.swal2-confirm:focus {
+    box-shadow: 0 0 0 3px rgba(var(--accent-color), 0.5) !important;
+}
+
+.swal2-icon.swal2-success [class^='swal2-success-line'] {
+    background-color: var(--primary-color) !important;
+}
+
+.swal2-icon.swal2-error [class^='swal2-x-mark'] {
+    background-color: var(--primary-color) !important;
+}

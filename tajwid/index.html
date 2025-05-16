@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Tajwid</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/sweetalert2.min.css">
+</head>
+<body>
+    <div class="container">
+        <div id="main-menu" class="screen active">
+            <h1>Game Tajwid</h1>
+            <button class="btn" data-target="nun-sukun-tanwin">Nun Sukun dan Tanwin</button>
+            <button class="btn" data-target="alif-lam">Alif Lam</button>
+            <button class="btn" data-target="qalqalah">Qalqalah</button>
+            <button class="btn" data-target="mad">Mad</button>
+            <div class="author-credit">
+                <p>Dibuat oleh: Anisa Nursalamah</p>
+            </div>
+        </div>
+
+        <div id="nun-sukun-tanwin" class="screen">
+            <h2>Nun Sukun dan Tanwin</h2>
+            <div id="question-container-nun-sukun-tanwin" class="question-container">
+                <div class="game-info">
+                    <div class="timer-display">Waktu: <span id="countdown-nun-sukun-tanwin">30</span> detik</div>
+                    <div class="score-display">Skor: <span id="score-nun-sukun-tanwin">0</span></div>
+                </div>
+                <p id="question-nun-sukun-tanwin"></p>
+                <div id="choices-nun-sukun-tanwin" class="choices">
+                    </div>
+            </div>
+            <button class="btn back-to-menu">Kembali ke Menu</button>
+        </div>
+
+        <div id="alif-lam" class="screen">
+            <h2>Alif Lam</h2>
+            <div id="question-container-alif-lam" class="question-container">
+                <div class="game-info">
+                    <div class="timer-display">Waktu: <span id="countdown-alif-lam">30</span> detik</div>
+                    <div class="score-display">Skor: <span id="score-alif-lam">0</span></div>
+                </div>
+                <p id="question-alif-lam"></p>
+                <div id="choices-alif-lam" class="choices">
+                    </div>
+            </div>
+            <button class="btn back-to-menu">Kembali ke Menu</button>
+        </div>
+
+        <div id="qalqalah" class="screen">
+            <h2>Qalqalah</h2>
+            <div id="question-container-qalqalah" class="question-container">
+                <div class="game-info">
+                    <div class="timer-display">Waktu: <span id="countdown-qalqalah">30</span> detik</div>
+                    <div class="score-display">Skor: <span id="score-qalqalah">0</span></div>
+                </div>
+                <p id="question-qalqalah"></p>
+                <div id="choices-qalqalah" class="choices">
+                    </div>
+            </div>
+            <button class="btn back-to-menu">Kembali ke Menu</button>
+        </div>
+
+        <div id="mad" class="screen">
+            <h2>Mad</h2>
+            <div id="question-container-mad" class="question-container">
+                <div class="game-info">
+                    <div class="timer-display">Waktu: <span id="countdown-mad">30</span> detik</div>
+                    <div class="score-display">Skor: <span id="score-mad">0</span></div>
+                </div>
+                <p id="question-mad"></p>
+                <div id="choices-mad" class="choices">
+                    </div>
+            </div>
+            <button class="btn back-to-menu">Kembali ke Menu</button>
+        </div>
+    </div>
+
+    <script src="../assets/sweetalert2.all.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

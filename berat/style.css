@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Gradien ungu lembut */
+    background: linear-gradient(135deg, #B19CD9, #E0BBE4); /* Soft Lavender ke Light Mauve */
+    margin: 0;
+    overflow: hidden;
+    color: #333; /* Warna teks default */
+}
+
+html {
+    overflow: hidden;
+}
+
+.game-container {
+    background-color: #fff; /* Tetap putih bersih untuk kontras */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Sedikit lebih lembut */
+    text-align: center;
+    width: 90%;
+    max-width: 550px;
+    max-height: 95vh;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+}
+
+.game-container:hover {
+    transform: translateY(-5px);
+}
+
+h1 {
+    color: #6A5ACD; /* Medium Slate Blue - ungu yang lebih dalam untuk judul */
+    margin-bottom: 5px;
+    font-size: 2.2em;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05); /* Bayangan yang lebih lembut */
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1px;
+    font-size: 1.2em;
+    color: #555;
+    font-weight: 600;
+}
+
+.game-info p {
+    background-color: #F8F5FB; /* Latar belakang yang sangat lembut, mendekati putih */
+    padding: 8px 15px;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03); /* Bayangan inset sangat halus */
+}
+
+#score, #timer {
+    color: #BA55D3; /* Medium Orchid - ungu yang lebih cerah untuk skor dan timer */
+    font-weight: 700;
+}
+
+.question-area {
+    margin-bottom: 5px;
+}
+
+#question {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1,8em;
+    margin-bottom: 5px;
+    color: #4B0082; /* Indigo - ungu yang sangat gelap untuk pertanyaan */
+    line-height: 1.4;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.option-button {
+    background-color: #8A2BE2; /* Blue Violet - ungu terang untuk tombol */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan yang sedikit lebih lembut */
+    font-weight: 600;
+}
+
+.option-button:hover {
+    background-color: #6A1AB2; /* Ungu lebih gelap saat hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.option-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.option-button:disabled {
+    background-color: #D8BFD8; /* Thistle - ungu keabuan untuk disabled */
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+    box-shadow: none;
+}
+
+#start-button {
+    background-color: #9966CC; /* Amethyst - ungu sedang untuk tombol mulai */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+#start-button:hover {
+    background-color: #7B4D99; /* Ungu lebih gelap saat hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+#start-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+#start-button:disabled {
+    background-color: #D8BFD8; /* Sama dengan tombol pilihan disabled */
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+    box-shadow: none;
+}
+
+#feedback {
+    margin-top: 5px;
+    font-weight: 700;
+    font-size: 1.2em;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+#feedback.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.correct {
+    color: #32CD32; /* Lime Green - tetap hijau untuk benar, tapi sedikit disesuaikan */
+}
+
+.incorrect {
+    color: #FF6347; /* Tomato - tetap merah untuk salah, tapi sedikit disesuaikan */
+}
+
+   
+    .author-credit {
+        bottom: 15px; /* Sesuaikan jarak dari bawah untuk layar kecil */
+        font-size: 0.8em;
+        width: calc(100% - 30px); /* Sesuaikan dengan padding container yang berkurang */
+    }
+
+/* Media Queries for simple responsiveness */
+@media (max-width: 600px) {
+    .game-container {
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .game-info {
+        font-size: 1em;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .options {
+        grid-template-columns: 1fr;
+    }
+
+    .option-button {
+        font-size: 1em;
+        padding: 10px;
+    }
+
+    #question {
+        font-size: 1.9em;
+    }
+
+    #start-button {
+        font-size: 1.1em;
+        padding: 12px 25px;
+    }
+}
+
+@media (max-width: 400px) {
+    .game-container {
+        padding: 10px;
+    }
+    h1 {
+        font-size: 1.6em;
+    }
+    #question {
+        font-size: 1,9em;
+    }
+    .game-info p {
+        padding: 5px 10px;
+    }
+}

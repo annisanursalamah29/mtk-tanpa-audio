@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games Pecahan</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="pecahan-operation-buttons" id="menu-pecahan">
+            <button class="menu-button active" onclic k="setOperation('fraction_plus'); setActiveMenuButton(this);"> + </button>
+            <button class="menu-button" onclick="setOperation('fraction_minus'); setActiveMenuButton(this);"> - </button>
+            <button class="menu-button" onclick="setOperation('fraction_multiply'); setActiveMenuButton(this);"> × </button>
+            <button class="menu-button" onclick="setOperation('fraction_divide'); setActiveMenuButton(this);"> : </button>
+            <button class="menu-button" onclick="setOperation('integer_plus'); setActiveMenuButton(this);"> + Bulat</button>
+            <button class="menu-button" onclick="setOperation('integer_minus'); setActiveMenuButton(this);"> - Bulat</button>
+            <button class="menu-button" onclick="setOperation('integer_multiply'); setActiveMenuButton(this);"> × Bulat</button>
+            <button class="menu-button" onclick="setOperation('integer_divide'); setActiveMenuButton(this);"> : Bulat</button>
+            <button class="menu-button" onclick="setOperation('decimal'); setActiveMenuButton(this);"> -> Desimal</button>
+        </div>
+        <h1>Games Pecahan</h1>
+        <div class="question" id="question"></div>
+        <div id="timer">Waktu: 30 detik</div>
+        <div id="answers" class="answers">
+        </div> 
+        <div class="result">
+            <p>Skor: <span id="skor-pecahan">0</span></p>
+            <p id="pesan-pecahan"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

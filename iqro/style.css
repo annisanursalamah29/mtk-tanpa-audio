@@ -1,0 +1,228 @@
+/* Root variables for easier color management */
+:root {
+    --primary-color: #6a89cc; /* Soft Blue */
+    --secondary-color: #f0f2f5; /* Light Gray/Off-white for background */
+    --accent-color: #a4b0be; /* Muted Gray for borders/dividers */
+    --text-color: #333; /* Dark text for readability */
+    --light-text-color: #f8f8f8; /* Light text for dark backgrounds */
+    --card-background: #ffffff; /* White for card backgrounds */
+    --button-hover-color: #5274bb; /* Darker blue on hover */
+    --shadow-light: rgba(0, 0, 0, 0.08); /* Soft shadow */
+    --shadow-medium: rgba(0, 0, 0, 0.12); /* Slightly stronger shadow */
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif; /* Modern, readable font */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--secondary-color); /* Light background */
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    background-color: var(--card-background);
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 8px 20px var(--shadow-medium); /* Enhanced shadow for depth */
+    padding: 30px; /* Increased padding */
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Increased spacing between sections */
+    margin: 20px; /* Add some margin for smaller screens */
+}
+
+.menu-controls,
+.teleprompter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Increased gap for buttons */
+    padding-bottom: 20px; /* More padding */
+    border-bottom: 1px solid var(--accent-color); /* Soft border */
+}
+
+.teleprompter-controls {
+    display: none; /* Sembunyikan secara default */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.teleprompter-controls.visible {
+    display: flex;
+    opacity: 1;
+}
+
+.menu-controls button,
+.teleprompter-controls button {
+    padding: 12px 20px; /* Larger buttons */
+    border: none;
+    border-radius: 8px; /* Rounded buttons */
+    cursor: pointer;
+    font-size: 1.05em; /* Slightly larger font */
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px var(--shadow-light); /* Soft button shadow */
+}
+
+.menu-controls button:hover,
+.teleprompter-controls button:hover {
+    background-color: var(--button-hover-color);
+    transform: translateY(-2px); /* Subtle lift effect */
+    box-shadow: 0 6px 12px var(--shadow-medium); /* Enhanced shadow on hover */
+}
+
+.speed-control {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Increased gap */
+    background-color: var(--secondary-color); /* Light background for speed control */
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px var(--shadow-light); /* Inner shadow for subtle depth */
+}
+
+.speed-control label {
+    font-weight: 600; /* Slightly bolder label */
+    color: var(--text-color);
+}
+
+.speed-control input[type="range"] {
+    width: 180px; /* Wider slider */
+    -webkit-appearance: none; /* Remove default styling */
+    appearance: none;
+    height: 8px;
+    background: var(--accent-color); /* Muted gray track */
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.8;
+    transition: opacity .2s;
+}
+
+.speed-control input[type="range"]:hover {
+    opacity: 1;
+}
+
+.speed-control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-color); /* Primary color for thumb */
+    cursor: pointer;
+    box-shadow: 0 2px 4px var(--shadow-medium);
+}
+
+.speed-control input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    box-shadow: 0 2px 4px var(--shadow-medium);
+}
+
+.speed-control span {
+    font-weight: bold;
+    color: var(--primary-color); /* Primary color for speed number */
+    min-width: 20px; /* Ensure consistent width */
+    text-align: center;
+}
+
+.teleprompter-display {
+    border: 1px solid var(--accent-color); /* Soft border */
+    background-color: #2c3e50; /* Darker background for teleprompter text */
+    color: var(--light-text-color);
+    padding: 30px; /* Increased padding for text area */
+    min-height: 350px; /* Slightly taller display */
+    max-height: 600px; /* Max height to ensure it doesn't get too tall on large screens */
+    overflow: hidden;
+    position: relative;
+    /* font-size: 3em; */ /* Remove this or comment out if you want to control font-size only in #teleprompterText */
+    line-height: 1.5; /* Increased line height for readability */
+    text-align: center;
+    border-radius: 8px; /* Rounded corners for display area */
+    box-shadow: inset 0 2px 5px var(--shadow-medium); /* Inner shadow for a bit of depth */
+}
+
+#teleprompterText {
+    position: absolute;
+    width: calc(100% - 60px); /* Adjust width based on padding */
+    top: 0;
+    left: 30px; /* Match left padding */
+    white-space: pre-wrap;
+    transition: transform 0.1s linear;
+    opacity: 0;
+    /* --- MODIFIKASI DI SINI --- */
+    font-size: 3.5em; /* Sesuaikan ukuran font sesuai keinginan Anda (misal 3.5em, 4em, dst.) */
+    line-height: 1.4; /* Sedikit kurangi line-height jika font sangat besar untuk menjaga kerapatan */
+    /* --- END MODIFIKASI --- */
+}
+
+   
+    .author-credit {
+        bottom: 15px; /* Sesuaikan jarak dari bawah untuk layar kecil */
+        font-size: 0.8em;
+        width: calc(100% - 30px); /* Sesuaikan dengan padding container yang berkurang */
+    }
+
+/* Basic Responsiveness */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .menu-controls,
+    .teleprompter-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .menu-controls button,
+    .teleprompter-controls button {
+        width: 100%; /* Full width buttons on small screens */
+        padding: 10px;
+        font-size: 0.95em;
+    }
+
+    .speed-control {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .speed-control input[type="range"] {
+        width: 80%;
+    }
+
+    .teleprompter-display {
+        padding: 20px;
+        /* font-size: 2.2em; */ /* Jika font-size utama di #teleprompterText, ini mungkin tidak perlu */
+        min-height: 250px;
+    }
+
+    #teleprompterText {
+        left: 20px;
+        width: calc(100% - 40px);
+        /* --- MODIFIKASI RESPONSIVE FONT SIZE DI SINI --- */
+        font-size: 2.5em; /* Ukuran font lebih kecil untuk layar kecil */
+        line-height: 1.4;
+        /* --- END MODIFIKASI RESPONSIVE FONT SIZE --- */
+    }
+}
+
+@media (max-width: 400px) {
+    #teleprompterText {
+        font-size: 2em; /* Lebih kecil lagi untuk layar sangat kecil */
+        line-height: 1.3;
+    }
+}
